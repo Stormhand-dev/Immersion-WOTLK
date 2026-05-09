@@ -112,7 +112,7 @@ local FRAME_NAMES = {
   -- Action bars
   "MainMenuBar",
   "MultiBarBottomLeft", "MultiBarBottomRight", "MultiBarLeft", "MultiBarRight",
-  "PetActionBarFrame", "DFRL_PetBar", "pUiMainBar", "MainMenuExpBar", "LFDMicroButton", "PVPMicroButton", "AchievementMicroButton",
+  "PetActionBarFrame", "DFRL_PetBar", "pUiMainBar", "MainMenuExpBar", "LFDMicroButton", "PVPMicroButton", "AchievementMicroButton", "DragonUI_XPBar", "ShapeshiftButton1", "ShapeshiftButton2", "ShapeshiftButton3", "ShapeshiftButton4", "ShapeshiftButton5", "ShapeshiftButton6", "ShapeshiftButton7", "ShapeshiftButton8", "ShapeshiftButton9", "ShapeshiftButton10",
 
   -- MicroMenu
   "CharacterMicroButton","SpellbookMicroButton","TalentMicroButton",
