@@ -112,7 +112,7 @@ local FRAME_NAMES = {
   -- Action bars
   "MainMenuBar",
   "MultiBarBottomLeft", "MultiBarBottomRight", "MultiBarLeft", "MultiBarRight",
-  "PetActionBarFrame", "DFRL_PetBar", "pUiMainBar", "MainMenuExpBar", "LFDMicroButton", "PVPMicroButton", "AchievementMicroButton", "DragonUI_XPBar", "ShapeshiftButton1", "ShapeshiftButton2", "ShapeshiftButton3", "ShapeshiftButton4", "ShapeshiftButton5", "ShapeshiftButton6", "ShapeshiftButton7", "ShapeshiftButton8", "ShapeshiftButton9", "ShapeshiftButton10",
+  "PetActionBarFrame", "DFRL_PetBar", "pUiMainBar", "MainMenuExpBar", "LFDMicroButton", "PVPMicroButton", "AchievementMicroButton", "DragonUI_XPBar", "ShapeshiftButton1",
 
   -- MicroMenu
   "CharacterMicroButton","SpellbookMicroButton","TalentMicroButton",
@@ -164,6 +164,7 @@ local DO_NOT_FORCE_SHOW = {
   TargetFrameToT = true,
   PetFrame = true,
   PetCastingBarFrame = true,
+
 }
 
 -- Bars/frames that should only alpha-fade (we do NOT call :Hide() at the end)
@@ -175,6 +176,7 @@ local FADE_ONLY = {
   MultiBarBottomLeft = true, MultiBarBottomRight = true, MultiBarLeft = true, MultiBarRight = true,
   PetActionBarFrame = true,
   PetFrame = true, -- prevents disappearing for good at the end of fade-out
+
   -- BuffFrame = true, TemporaryEnchantFrame = true, -- <- removed on purpose
 }
 
