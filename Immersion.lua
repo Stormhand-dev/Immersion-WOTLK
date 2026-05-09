@@ -705,6 +705,40 @@ local function IsActionBarish(name)
   return false
 end
 
+-- ===================== Hover detection overlay =====================
+-- Invisible persistent frame that covers the action bar area.
+-- Ensures mouse-over detection works even when all bar frames are
+-- hidden (alpha=0 + Hide), since GetMouseFocus() only returns shown frames.
+local hoverOverlay = CreateFrame("Frame", "ImmersionHoverOverlay", UIParent)
+hoverOverlay:SetFrameStrata("BACKGROUND")
+hoverOverlay:SetWidth(512)
+hoverOverlay:SetHeight(100)
+hoverOverlay:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 0)
+hoverOverlay:EnableMouse(true)
+hoverOverlay:SetAlpha(0)
+hoverOverlay:Show()
+
+hoverOverlay:SetScript("OnEnter", function()
+  f.mouseOverBars = true
+  f.postMouseoverGraceUntil = 0
+  f:Evaluate("mouseover_bars_enter")
+end)
+
+hoverOverlay:SetScript("OnLeave", function()
+  local now = GetTime and GetTime() or 0
+  f.postMouseoverGraceUntil = now + MOUSEOVER_GRACE
+  f.mouseOverBars = false
+  if C_TimerAfter then
+    C_TimerAfter(MOUSEOVER_GRACE, function()
+      if not f.mouseOverBars and not f.inCombat then
+        f.postMouseoverGraceUntil = 0
+        f:Evaluate("mouseover_bars_end_delayed")
+      end
+    end)
+  end
+  f:Evaluate("mouseover_bars_leave_grace")
+end)
+
 local hoverWatch = CreateFrame("Frame"); hoverWatch:Show()
 hoverWatch.acc, hoverWatch.tick = 0, 0.05
 hoverWatch:SetScript("OnUpdate", function(self, elapsed)
